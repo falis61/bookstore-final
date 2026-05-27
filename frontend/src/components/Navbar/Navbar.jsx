@@ -517,6 +517,32 @@ const Navbar = () => {
         <Link to="/contact" className="text-[#F3E7C8] text-4xl mb-8">
           {t("contact")}
         </Link>
+        {!isLoggedIn && (
+  <Link to="/logIn" className="text-[#F3E7C8] text-4xl mb-8">
+    {t("login")}
+  </Link>
+)}
+
+{isLoggedIn && (
+  <Link to="/profile" className="text-[#F3E7C8] text-4xl mb-8">
+    Profile
+  </Link>
+)}
+
+{isLoggedIn && role === "user" && (
+  <Link to="/cart" className="text-[#F3E7C8] text-4xl mb-8">
+    Cart
+  </Link>
+)}
+
+{isLoggedIn && role === "user" && (
+  <Link
+    to="/profile/favourites"
+    className="text-[#F3E7C8] text-4xl mb-8"
+  >
+    Favourites
+  </Link>
+)}
       </div>
     </section>
   );
