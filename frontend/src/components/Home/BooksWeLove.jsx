@@ -11,7 +11,7 @@ const BooksWeLove = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-books-we-love"
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-books-we-love"
       );
       setData(response.data.data);
     };

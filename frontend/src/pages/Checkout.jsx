@@ -63,17 +63,17 @@ const Checkout = () => {
         setLoading(true);
 
         const cartRes = await axios.get(
-          "http://localhost:1000/api/v1/get-user-cart",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-cart",
           { headers }
         );
 
         const userRes = await axios.get(
-          "http://localhost:1000/api/v1/get-user-information",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-information",
           { headers }
         );
 
         const addressRes = await axios.get(
-          "http://localhost:1000/api/v1/get-addresses",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-addresses",
           { headers }
         );
 
@@ -247,7 +247,7 @@ const Checkout = () => {
       setIsSubmitting(true);
 
       const response = await axios.post(
-        "http://localhost:1000/api/v1/place-order",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/place-order",
         {
           order: cart,
           shippingAddress,

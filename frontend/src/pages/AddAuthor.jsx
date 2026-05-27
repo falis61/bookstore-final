@@ -39,7 +39,7 @@ const AddAuthor = () => {
   useEffect(() => {
     const fetchBookAuthors = async () => {
       try {
-        const res = await axios.get("http://localhost:1000/api/v1/get-all-books");
+        const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
         const books = res.data.data || [];
 
         const uniqueAuthors = [
@@ -72,7 +72,7 @@ const AddAuthor = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:1000/api/v1/add-author",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-author",
         Data,
         { headers }
       );

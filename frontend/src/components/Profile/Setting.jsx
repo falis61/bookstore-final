@@ -68,7 +68,7 @@ const Settings = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-user-information",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-information",
           { headers }
         );
 
@@ -89,7 +89,7 @@ const Settings = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-email",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-email",
         { email: Value.newEmail },
         { headers }
       );
@@ -97,7 +97,7 @@ const Settings = () => {
       toast.success(response.data.message, toastStyle);
 
       const refreshed = await axios.get(
-        "http://localhost:1000/api/v1/get-user-information",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-information",
         { headers }
       );
       setProfileData(refreshed.data);
@@ -126,7 +126,7 @@ const Settings = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/change-password",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/change-password",
         {
           currentPassword: Value.currentPassword,
           newPassword: Value.newPassword,
@@ -156,7 +156,7 @@ const Settings = () => {
       setNewsletterLoading(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/subscribe-newsletter",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/subscribe-newsletter",
         {},
         { headers }
       );
@@ -180,7 +180,7 @@ const Settings = () => {
 const handleLogoutAllDevicesPreview = async () => {
   try {
     const response = await axios.post(
-      "http://localhost:1000/api/v1/logout-all-devices",
+      "https://bookstore-backend-x6dx.onrender.com/api/v1/logout-all-devices",
       {},
       { headers }
     );
@@ -228,7 +228,7 @@ const handleLogoutAllDevicesPreview = async () => {
 
                 try {
                   const response = await axios.delete(
-                    "http://localhost:1000/api/v1/delete-account",
+                    "https://bookstore-backend-x6dx.onrender.com/api/v1/delete-account",
                     { headers }
                   );
 

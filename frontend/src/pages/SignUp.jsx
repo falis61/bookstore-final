@@ -52,7 +52,7 @@ const SignUp = () => {
         toast.error("Passwords do not match", errorToastStyle);
       } else {
         const response = await axios.post(
-          "http://localhost:1000/api/v1/sign-up",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/sign-up",
           {
             username: values.username,
             email: values.email,

@@ -48,7 +48,7 @@ const BundleDetails = () => {
         setNotFound(false);
 
         const res = await axios.get(
-          `http://localhost:1000/api/v1/get-bundle/${id}`
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/get-bundle/${id}`
         );
 
         setBundle(res.data.data);
@@ -71,7 +71,7 @@ const BundleDetails = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-favourite-bundles",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-bundles",
           { headers }
         );
 
@@ -91,7 +91,7 @@ const BundleDetails = () => {
   const updateNavbarCartCount = async () => {
     try {
       const cartRes = await axios.get(
-        "http://localhost:1000/api/v1/get-user-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-cart",
         { headers }
       );
 
@@ -126,7 +126,7 @@ const BundleDetails = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-bundle-to-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-bundle-to-cart",
         {},
         {
           headers: {
@@ -163,7 +163,7 @@ const BundleDetails = () => {
         : "add-bundle-to-favourite";
 
       const response = await axios.put(
-        `http://localhost:1000/api/v1/${endpoint}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/${endpoint}`,
         {},
         {
           headers: {

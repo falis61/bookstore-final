@@ -105,7 +105,7 @@ const BookCard = ({ data, onRemove, showNewBadge = false, showDiscountBadge = fa
     try {
       if (isFav) {
         await axios.put(
-          "http://localhost:1000/api/v1/remove-book-from-favourite",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/remove-book-from-favourite",
           {},
           { headers }
         );
@@ -116,7 +116,7 @@ const BookCard = ({ data, onRemove, showNewBadge = false, showDiscountBadge = fa
         if (onRemove) onRemove(bookId);
       } else {
         await axios.put(
-          "http://localhost:1000/api/v1/add-book-to-favourite",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book-to-favourite",
           {},
           { headers }
         );
@@ -158,7 +158,7 @@ const BookCard = ({ data, onRemove, showNewBadge = false, showDiscountBadge = fa
 
     try {
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-book-to-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book-to-cart",
         {},
         { headers }
       );

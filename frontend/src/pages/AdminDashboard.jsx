@@ -23,7 +23,7 @@ const AdminDashboard = () => {
   const fetchLowStockBooks = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-all-books"
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books"
       );
 
       const lowStock = (response.data.data || []).filter(
@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     const fetchStats = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/admin-stats",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/admin-stats",
           { headers }
         );
         setStats(res.data.data);
@@ -70,7 +70,7 @@ const AdminDashboard = () => {
       setUploading(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-profile-image",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-profile-image",
         formData,
         {
           headers: {
@@ -102,7 +102,7 @@ const AdminDashboard = () => {
       setUploading(true);
 
       await axios.put(
-        "http://localhost:1000/api/v1/remove-profile-image",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/remove-profile-image",
         {},
         { headers }
       );

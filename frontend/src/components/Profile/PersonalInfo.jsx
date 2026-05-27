@@ -90,7 +90,7 @@ const PersonalInfo = () => {
       setSavingUsername(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-username",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-username",
         { username: nextUsername },
         { headers }
       );
@@ -129,7 +129,7 @@ const PersonalInfo = () => {
       setSavingEmail(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-email",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-email",
         { email: nextEmail },
         { headers }
       );
@@ -159,7 +159,7 @@ const PersonalInfo = () => {
       setSavingExtraInfo(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-user-info",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-user-info",
         {
           phone: formData.phone,
           dob: formData.dob,
@@ -220,7 +220,7 @@ const PersonalInfo = () => {
       setUploading(true);
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/update-profile-image",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/update-profile-image",
         uploadData,
         {
           headers: {
@@ -254,7 +254,7 @@ const PersonalInfo = () => {
       setUploading(true);
 
       await axios.put(
-        "http://localhost:1000/api/v1/remove-profile-image",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/remove-profile-image",
         {},
         { headers }
       );

@@ -38,7 +38,7 @@ const AddBundle = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:1000/api/v1/get-all-books");
+        const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
         setBooks(res.data.data || []);
       } catch (error) {
         console.log("Books fetch error:", error);
@@ -92,7 +92,7 @@ const AddBundle = () => {
       }
 
       const response = await axios.post(
-        "http://localhost:1000/api/v1/add-bundle",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-bundle",
         {
           ...Data,
           discountPercent: Number(Data.discountPercent || 0),

@@ -50,7 +50,7 @@ const AllOrders = () => {
       setFetchError("");
 
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-all-orders",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-orders",
         { headers }
       );
 
@@ -93,7 +93,7 @@ const AllOrders = () => {
       const orderId = filteredOrders[index]._id;
 
       const response = await axios.put(
-        `http://localhost:1000/api/v1/update-status/${orderId}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/update-status/${orderId}`,
         {
           status: selectedStatus,
           estimatedDeliveryDate: estimatedDate || null,
@@ -132,7 +132,7 @@ const AllOrders = () => {
   const handleRemove = async (orderId) => {
     try {
       await axios.put(
-        `http://localhost:1000/api/v1/hide-order/${orderId}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/hide-order/${orderId}`,
         {},
         { headers }
       );
@@ -147,7 +147,7 @@ const AllOrders = () => {
 
   const handleDelete = async (orderId) => {
     try {
-      await axios.delete(`http://localhost:1000/api/v1/delete-order/${orderId}`, {
+      await axios.delete(`https://bookstore-backend-x6dx.onrender.com/api/v1/delete-order/${orderId}`, {
         headers,
       });
 

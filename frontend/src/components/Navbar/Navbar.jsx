@@ -43,7 +43,7 @@ const Navbar = () => {
 
   const fetchBooks = async () => {
     try {
-      const res = await axios.get("http://localhost:1000/api/v1/get-all-books");
+      const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
       setAllBooks(res.data.data || []);
     } catch (err) {
       console.log("Search fetch error:", err);
@@ -65,7 +65,7 @@ const Navbar = () => {
       }
 
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-user-information",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-information",
         {
           headers: {
             id,
@@ -93,7 +93,7 @@ const Navbar = () => {
         }
 
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-user-cart",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-cart",
           {
             headers: {
               id,
@@ -125,7 +125,7 @@ const Navbar = () => {
         }
 
         const booksResponse = await axios.get(
-          "http://localhost:1000/api/v1/get-favourite-books",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-books",
           {
             headers: {
               id,
@@ -141,7 +141,7 @@ const Navbar = () => {
         );
 
         const bundlesResponse = await axios.get(
-          "http://localhost:1000/api/v1/get-favourite-bundles",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-bundles",
           {
             headers: {
               id,

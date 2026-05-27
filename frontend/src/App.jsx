@@ -65,7 +65,7 @@ const App = () => {
         }
 
         const res = await axios.get(
-          "http://localhost:1000/api/v1/get-favourite-books",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-books",
           {
             headers: {
               id,

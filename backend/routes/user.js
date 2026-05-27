@@ -658,7 +658,7 @@ router.put("/subscribe-newsletter", authenticateToken, async (req, res) => {
     await sendEmail(user.email, "BookNest Subscription", {
       type: "subscription",
       username: user.username,
-      unsubscribeLink: `http://localhost:1000/api/v1/unsubscribe/${user._id}`,
+      unsubscribeLink: `https://bookstore-backend-x6dx.onrender.com/api/v1/unsubscribe/${user._id}`,
     });
 
     return res.status(200).json({
@@ -691,7 +691,7 @@ router.post("/subscribe", async (req, res) => {
     await sendEmail(user.email, "BookNest Subscription", {
       type: "subscription",
       username: user.username,
-      unsubscribeLink: `http://localhost:1000/api/v1/unsubscribe/${user._id}`,
+      unsubscribeLink: `https://bookstore-backend-x6dx.onrender.com/api/v1/unsubscribe/${user._id}`,
     });
 
     return res.status(200).json({

@@ -41,7 +41,7 @@ const ManageBundles = () => {
 
   const fetchBundles = async () => {
     try {
-      const response = await axios.get("http://localhost:1000/api/v1/get-bundles");
+      const response = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-bundles");
       setBundles(response.data.data || []);
     } catch (error) {
       toast.error(
@@ -53,7 +53,7 @@ const ManageBundles = () => {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:1000/api/v1/get-all-books");
+      const response = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
       setBooks(response.data.data || []);
     } catch (error) {
       console.log("Books fetch error:", error);
@@ -134,7 +134,7 @@ const ManageBundles = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:1000/api/v1/update-bundle/${bundleId}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/update-bundle/${bundleId}`,
         {
           ...editData,
           discountPercent: Number(editData.discountPercent || 0),
@@ -156,7 +156,7 @@ const ManageBundles = () => {
   const deleteBundle = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:1000/api/v1/delete-bundle/${id}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/delete-bundle/${id}`,
         { headers }
       );
 

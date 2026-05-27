@@ -27,7 +27,7 @@ const ForgotPassword = () => {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:1000/api/v1/forgot-password",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/forgot-password",
         {
           email: Data.email,
         }

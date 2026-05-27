@@ -13,7 +13,7 @@ const DiscountedBooks = () => {
     const fetchDiscountedBooks = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/discounted-books"
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/discounted-books"
         );
 
         setData(response.data.data || []);

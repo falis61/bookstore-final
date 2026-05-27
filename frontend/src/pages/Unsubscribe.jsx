@@ -12,7 +12,7 @@ const Unsubscribe = () => {
     const unsubscribe = async () => {
       try {
         const response = await axios.put(
-          `http://localhost:1000/api/v1/unsubscribe/${token}`
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/unsubscribe/${token}`
         );
         setSuccess(true);
         setMessage(response.data.message);

@@ -11,7 +11,7 @@ const TrendingBooks = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-trending-books"
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-trending-books"
       );
       setData(response.data.data);
     };

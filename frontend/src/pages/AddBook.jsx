@@ -51,7 +51,7 @@ const AddBook = () => {
     const fetchAuthors = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/get-all-authors",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-authors",
           { headers }
         );
         setAuthors(res.data.data || []);
@@ -92,7 +92,7 @@ const AddBook = () => {
         toast("All fields are required", toastStyle);
       } else {
         const response = await axios.post(
-          "http://localhost:1000/api/v1/add-book",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book",
           {
             ...Data,
             category: Data.category.join(", "),

@@ -10,7 +10,7 @@ const Bundles = () => {
     const fetchBundles = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-bundles"
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-bundles"
         );
 
         setBundles(response.data.data || []);

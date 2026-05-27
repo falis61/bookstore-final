@@ -10,7 +10,7 @@ const Deals = () => {
     const fetchDeals = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/discounted-books"
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/discounted-books"
         );
         setData(res.data.data || []);
       } catch (error) {

@@ -101,7 +101,7 @@ const ResetPassword = () => {
       setLoading(true);
 
       const response = await axios.put(
-        `http://localhost:1000/api/v1/reset-password/${token}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/reset-password/${token}`,
         {
           newPassword: Data.newPassword,
           confirmPassword: Data.confirmPassword,

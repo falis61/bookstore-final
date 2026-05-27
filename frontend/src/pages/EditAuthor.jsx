@@ -49,7 +49,7 @@ const EditAuthor = () => {
     const fetchAuthor = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1000/api/v1/get-author-by-id/${id}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author-by-id/${id}`,
           { headers }
         );
 
@@ -83,7 +83,7 @@ const EditAuthor = () => {
       }
 
       const response = await axios.put(
-        `http://localhost:1000/api/v1/update-author/${id}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/update-author/${id}`,
         Data,
         { headers }
       );

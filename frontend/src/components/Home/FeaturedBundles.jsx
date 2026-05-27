@@ -52,7 +52,7 @@ const FeaturedBundles = () => {
 
   const fetchBundles = async () => {
     try {
-      const res = await axios.get("http://localhost:1000/api/v1/get-bundles");
+      const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-bundles");
 
       const preferredOrder = [
         "Romance Bundle",
@@ -90,7 +90,7 @@ const FeaturedBundles = () => {
       if (!headers.id || !getStoredItem("token")) return;
 
       const res = await axios.get(
-        "http://localhost:1000/api/v1/get-favourite-bundles",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-bundles",
         { headers }
       );
 
@@ -103,7 +103,7 @@ const FeaturedBundles = () => {
   const updateNavbarCartCount = async () => {
     try {
       const cartRes = await axios.get(
-        "http://localhost:1000/api/v1/get-user-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-cart",
         { headers }
       );
 
@@ -129,7 +129,7 @@ const FeaturedBundles = () => {
 
     try {
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-bundle-to-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-bundle-to-cart",
         {},
         {
           headers: {
@@ -168,7 +168,7 @@ const FeaturedBundles = () => {
     try {
       if (isFav) {
         await axios.put(
-          "http://localhost:1000/api/v1/remove-bundle-from-favourite",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/remove-bundle-from-favourite",
           {},
           {
             headers: {
@@ -185,7 +185,7 @@ const FeaturedBundles = () => {
         toast.success("Removed from favourites", toastStyle);
       } else {
         await axios.put(
-          "http://localhost:1000/api/v1/add-bundle-to-favourite",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-bundle-to-favourite",
           {},
           {
             headers: {

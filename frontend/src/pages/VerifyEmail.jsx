@@ -16,7 +16,7 @@ const VerifyEmail = () => {
     const verifyEmail = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1000/api/v1/verify-email/${token}`
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/verify-email/${token}`
         );
 
         setSuccess(true);

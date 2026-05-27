@@ -79,7 +79,7 @@ const ViewBookDetails = () => {
 
   const fetchBook = async () => {
     const response = await axios.get(
-      `http://localhost:1000/api/v1/get-book-by-id/${id}`
+      `https://bookstore-backend-x6dx.onrender.com/api/v1/get-book-by-id/${id}`
     );
     const bookData = response.data.data;
     setData(bookData);
@@ -87,7 +87,7 @@ const ViewBookDetails = () => {
     if (bookData?.author) {
       try {
         const authorRes = await axios.get(
-          `http://localhost:1000/api/v1/get-author/${encodeURIComponent(
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author/${encodeURIComponent(
             bookData.author
           )}`
         );
@@ -102,7 +102,7 @@ const ViewBookDetails = () => {
 
   const fetchRelatedBooks = async (category, currentId) => {
     try {
-      const res = await axios.get("http://localhost:1000/api/v1/get-all-books");
+      const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
 
       const books = res.data.data || [];
 
@@ -131,7 +131,7 @@ const ViewBookDetails = () => {
   useEffect(() => {
     const loadData = async () => {
       const response = await axios.get(
-        `http://localhost:1000/api/v1/get-book-by-id/${id}`
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/get-book-by-id/${id}`
       );
 
       const bookData = response.data.data;
@@ -144,7 +144,7 @@ const ViewBookDetails = () => {
       if (bookData?.author) {
         try {
           const authorRes = await axios.get(
-            `http://localhost:1000/api/v1/get-author/${encodeURIComponent(
+            `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author/${encodeURIComponent(
               bookData.author
             )}`
           );
@@ -192,7 +192,7 @@ const ViewBookDetails = () => {
   const handleFavourite = async () => {
     try {
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-book-to-favourite",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book-to-favourite",
         {},
         { headers }
       );
@@ -213,7 +213,7 @@ const ViewBookDetails = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-book-to-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book-to-cart",
         {},
         { headers }
       );
@@ -232,7 +232,7 @@ const ViewBookDetails = () => {
     setAlertLoading(true);
 
     const response = await axios.post(
-      `http://localhost:1000/api/v1/availability-alert/${id}`,
+      `https://bookstore-backend-x6dx.onrender.com/api/v1/availability-alert/${id}`,
       {},
       { headers }
     );
@@ -252,7 +252,7 @@ const ViewBookDetails = () => {
   const deleteBook = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:1000/api/v1/delete-book",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/delete-book",
         { headers }
       );
       toast.success(response.data.message, toastStyle);
@@ -273,7 +273,7 @@ const ViewBookDetails = () => {
       }
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/rate-book",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/rate-book",
         { rating: selectedRating },
         { headers }
       );
@@ -301,13 +301,13 @@ const ViewBookDetails = () => {
       }
 
       await axios.put(
-        "http://localhost:1000/api/v1/rate-book",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/rate-book",
         { rating: selectedRating },
         { headers }
       );
 
       const response = await axios.put(
-        "http://localhost:1000/api/v1/add-review",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/add-review",
         {
           comment: reviewText,
           rating: selectedRating,
@@ -328,7 +328,7 @@ const ViewBookDetails = () => {
   const handleDeleteReview = async () => {
     try {
       const response = await axios.delete(
-        "http://localhost:1000/api/v1/delete-review",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/delete-review",
         { headers }
       );
 
@@ -349,7 +349,7 @@ const ViewBookDetails = () => {
       if (!Data?.author) return;
 
       const response = await axios.get(
-        `http://localhost:1000/api/v1/get-author/${encodeURIComponent(
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author/${encodeURIComponent(
           Data.author
         )}`
       );

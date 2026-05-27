@@ -82,7 +82,7 @@ const Login = () => {
         toast("All fields are required", toastStyle);
       } else {
         const response = await axios.post(
-          "http://localhost:1000/api/v1/sign-in",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/sign-in",
           values
         );
 
@@ -122,7 +122,7 @@ const Login = () => {
       const idToken = await result.user.getIdToken();
 
       const response = await axios.post(
-        "http://localhost:1000/api/v1/google-sign-in",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/google-sign-in",
         {
           token: idToken,
         }

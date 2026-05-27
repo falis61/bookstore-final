@@ -56,7 +56,7 @@ const Address = () => {
     const fetchData = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:1000/api/v1/get-addresses",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-addresses",
           { headers }
         );
         setAddresses(res.data.addresses || []);
@@ -104,7 +104,7 @@ const Address = () => {
 
       if (editingAddressId) {
         const res = await axios.put(
-          `http://localhost:1000/api/v1/edit-address/${editingAddressId}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/edit-address/${editingAddressId}`,
           { ...formData, fullAddress },
           { headers }
         );
@@ -114,7 +114,7 @@ const Address = () => {
         resetForm();
       } else {
         const res = await axios.post(
-          "http://localhost:1000/api/v1/add-address",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-address",
           { ...formData, fullAddress },
           { headers }
         );
@@ -149,7 +149,7 @@ const Address = () => {
   const deleteAddress = async (id) => {
     try {
       const res = await axios.delete(
-        `http://localhost:1000/api/v1/delete-address/${id}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/delete-address/${id}`,
         { headers }
       );
       setAddresses(res.data.addresses);
@@ -169,7 +169,7 @@ const Address = () => {
   const setDefault = async (id) => {
     try {
       const res = await axios.put(
-        `http://localhost:1000/api/v1/set-default-address/${id}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/set-default-address/${id}`,
         {},
         { headers }
       );

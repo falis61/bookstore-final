@@ -12,7 +12,7 @@ const MostPopular = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-most-popular-books"
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-most-popular-books"
         );
         setData(response.data.data || []);
       } catch (error) {

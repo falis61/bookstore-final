@@ -39,7 +39,7 @@ const Search = () => {
         return;
       }
 
-      const res = await axios.get("http://localhost:1000/api/v1/search-books", {
+      const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/search-books", {
         params: {
           query: customQuery,
           type: customType,
@@ -103,7 +103,7 @@ const Search = () => {
           groupedAuthors.map(async (item) => {
             try {
               const res = await axios.get(
-                `http://localhost:1000/api/v1/get-author/${encodeURIComponent(
+                `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author/${encodeURIComponent(
                   item.author
                 )}`
               );
@@ -154,7 +154,7 @@ const Search = () => {
         setIsSearching(true);
 
         const res = await axios.get(
-          "http://localhost:1000/api/v1/search-books",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/search-books",
           {
             params: {
               query: trimmed,
@@ -185,7 +185,7 @@ const Search = () => {
   const handleAuthorClick = async (authorName) => {
     try {
       const res = await axios.get(
-        `http://localhost:1000/api/v1/get-author/${encodeURIComponent(
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/get-author/${encodeURIComponent(
           authorName
         )}`
       );

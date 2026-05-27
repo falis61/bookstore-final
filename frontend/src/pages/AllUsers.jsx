@@ -18,7 +18,7 @@ const AllUsers = () => {
     const fetchUsers = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:1000/api/v1/get-all-users",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-users",
           { headers }
         );
         setUsers(response.data.data);

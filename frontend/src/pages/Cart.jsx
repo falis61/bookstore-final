@@ -41,7 +41,7 @@ const Cart = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-user-cart",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-user-cart",
         { headers }
       );
 
@@ -57,7 +57,7 @@ const Cart = () => {
     try {
       if (item.itemType === "bundle") {
         const response = await axios.put(
-          `http://localhost:1000/api/v1/remove-bundle-from-cart/${item.bundle._id}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/remove-bundle-from-cart/${item.bundle._id}`,
           {},
           { headers }
         );
@@ -69,7 +69,7 @@ const Cart = () => {
         );
       } else {
         const response = await axios.put(
-          `http://localhost:1000/api/v1/remove-book-from-cart/${item.book._id}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/remove-book-from-cart/${item.book._id}`,
           {},
           { headers }
         );
@@ -95,7 +95,7 @@ const Cart = () => {
     try {
       if (item.itemType === "bundle") {
         await axios.put(
-          "http://localhost:1000/api/v1/add-bundle-to-cart",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-bundle-to-cart",
           {},
           {
             headers: {
@@ -114,7 +114,7 @@ const Cart = () => {
         );
       } else {
         await axios.put(
-          "http://localhost:1000/api/v1/add-book-to-cart",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/add-book-to-cart",
           {},
           {
             headers:{
@@ -149,7 +149,7 @@ const Cart = () => {
       if(item.itemType==="bundle"){
 
         await axios.put(
-          `http://localhost:1000/api/v1/decrease-bundle-from-cart/${item.bundle._id}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/decrease-bundle-from-cart/${item.bundle._id}`,
           {},
           {headers}
         );
@@ -172,7 +172,7 @@ const Cart = () => {
       }else{
 
         await axios.put(
-          `http://localhost:1000/api/v1/decrease-book-from-cart/${item.book._id}`,
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/decrease-book-from-cart/${item.book._id}`,
           {},
           {headers}
         );

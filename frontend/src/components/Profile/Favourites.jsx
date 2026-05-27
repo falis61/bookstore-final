@@ -24,7 +24,7 @@ const Favourites = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-favourite-books",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-books",
         { headers }
       );
 
@@ -35,7 +35,7 @@ const Favourites = () => {
       );
 
       const bundleResponse = await axios.get(
-        "http://localhost:1000/api/v1/get-favourite-bundles",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-favourite-bundles",
         { headers }
       );
 
@@ -62,7 +62,7 @@ const Favourites = () => {
 
     try {
       await axios.put(
-        "http://localhost:1000/api/v1/remove-bundle-from-favourite",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/remove-bundle-from-favourite",
         {},
         {
           headers: {

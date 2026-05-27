@@ -62,7 +62,7 @@ const Categories = () => {
   useEffect(() => {
     const fetchBooks = async () => {
       try {
-        const res = await axios.get("http://localhost:1000/api/v1/get-all-books");
+        const res = await axios.get("https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-books");
         const fetchedBooks = res.data.data || res.data.books || res.data || [];
         setAllBooks(fetchedBooks);
       } catch (error) {

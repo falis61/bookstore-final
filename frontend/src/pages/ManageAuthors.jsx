@@ -33,7 +33,7 @@ const ManageAuthors = () => {
     try {
       setLoading(true);
       const response = await axios.get(
-        "http://localhost:1000/api/v1/get-all-authors",
+        "https://bookstore-backend-x6dx.onrender.com/api/v1/get-all-authors",
         { headers }
       );
       setAuthors(response.data.data || []);
@@ -88,7 +88,7 @@ const ManageAuthors = () => {
   const handleDelete = async (authorId) => {
     try {
       const response = await axios.delete(
-        `http://localhost:1000/api/v1/delete-author/${authorId}`,
+        `https://bookstore-backend-x6dx.onrender.com/api/v1/delete-author/${authorId}`,
         { headers }
       );
 

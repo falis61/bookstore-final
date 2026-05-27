@@ -68,7 +68,7 @@ const UpdateBook = () => {
         toast("All fields are required", toastStyle);
       } else {
         const response = await axios.put(
-          "http://localhost:1000/api/v1/update-book",
+          "https://bookstore-backend-x6dx.onrender.com/api/v1/update-book",
           {
             ...Data,
             price: Number(Data.price),
@@ -93,7 +93,7 @@ const UpdateBook = () => {
     const fetch = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:1000/api/v1/get-book-by-id/${id}`
+          `https://bookstore-backend-x6dx.onrender.com/api/v1/get-book-by-id/${id}`
         );
         setData({
           url: response.data.data.url || "",
