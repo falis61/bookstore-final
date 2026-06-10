@@ -447,4 +447,3 @@ BookNest Team`;
 };
 
 module.exports = sendEmail;
-```
