@@ -1,20 +1,12 @@
-const nodemailer = require("nodemailer");
+```js
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendEmail = async (to, subject, payload) => {
   try {
-    const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
-  },
-});
-
     let text = "";
     let html = "";
-
 
     // ✅ Password reset email
     if (payload && typeof payload === "object" && payload.type === "reset") {
@@ -71,16 +63,8 @@ BookNest Team`;
 
 Your BookNest order has been delivered successfully 📚
 
-${
-  bookTitle ? `Book: ${bookTitle}\n` : ""
-}${
-  estimatedDeliveryDate ? `Delivered on: ${estimatedDeliveryDate}\n` : ""
-}${
-  deliveryNote ? `Delivery note: ${deliveryNote}\n` : ""
-}
-${
-  viewOrdersLink ? `View your order details: ${viewOrdersLink}\n` : ""
-}
+${bookTitle ? `Book: ${bookTitle}\n` : ""}${estimatedDeliveryDate ? `Delivered on: ${estimatedDeliveryDate}\n` : ""}${deliveryNote ? `Delivery note: ${deliveryNote}\n` : ""}
+${viewOrdersLink ? `View your order details: ${viewOrdersLink}\n` : ""}
 
 We hope you enjoy your book.
 
@@ -118,23 +102,9 @@ BookNest Team`;
                   : ""
               }
 
-              ${
-                bookTitle
-                  ? `<p><strong>Book:</strong> ${bookTitle}</p>`
-                  : ""
-              }
-
-              ${
-                estimatedDeliveryDate
-                  ? `<p><strong>Delivered on:</strong> ${estimatedDeliveryDate}</p>`
-                  : ""
-              }
-
-              ${
-                deliveryNote
-                  ? `<p><strong>Delivery note:</strong> ${deliveryNote}</p>`
-                  : ""
-              }
+              ${bookTitle ? `<p><strong>Book:</strong> ${bookTitle}</p>` : ""}
+              ${estimatedDeliveryDate ? `<p><strong>Delivered on:</strong> ${estimatedDeliveryDate}</p>` : ""}
+              ${deliveryNote ? `<p><strong>Delivery note:</strong> ${deliveryNote}</p>` : ""}
 
               ${
                 viewOrdersLink
@@ -146,17 +116,9 @@ BookNest Team`;
                   : ""
               }
 
-              <p style="margin-top:20px;">
-                We hope you enjoy your book.
-              </p>
-
-              <p style="margin-top:10px;">
-                Enjoy your reading 📖
-              </p>
-
-              <p style="margin-top:20px;">
-                Thank you for shopping with BookNest!
-              </p>
+              <p style="margin-top:20px;">We hope you enjoy your book.</p>
+              <p style="margin-top:10px;">Enjoy your reading 📖</p>
+              <p style="margin-top:20px;">Thank you for shopping with BookNest!</p>
             </div>
           </div>
         </div>
@@ -164,28 +126,20 @@ BookNest Team`;
     }
 
     // ✅ Cancelled email
-else if (payload && typeof payload === "object" && payload.type === "cancelled") {
-  const username = payload.username || "Customer";
-  const bookTitle = payload.bookTitle || "";
-  const bookImage = payload.bookImage || "";
-  const cancellationDate = payload.cancellationDate || "";
-  const deliveryNote = payload.deliveryNote || "";
-  const viewOrdersLink = payload.viewOrdersLink || "";
+    else if (payload && typeof payload === "object" && payload.type === "cancelled") {
+      const username = payload.username || "Customer";
+      const bookTitle = payload.bookTitle || "";
+      const bookImage = payload.bookImage || "";
+      const cancellationDate = payload.cancellationDate || "";
+      const deliveryNote = payload.deliveryNote || "";
+      const viewOrdersLink = payload.viewOrdersLink || "";
 
-  text = `Hi ${username},
+      text = `Hi ${username},
 
 Your BookNest order has been cancelled ❌
 
-${
-  bookTitle ? `Book: ${bookTitle}\n` : ""
-}${
-  cancellationDate ? `Cancelled on: ${cancellationDate}\n` : ""
-}${
-  deliveryNote ? `Note: ${deliveryNote}\n` : ""
-}
-${
-  viewOrdersLink ? `View your orders: ${viewOrdersLink}\n` : ""
-}
+${bookTitle ? `Book: ${bookTitle}\n` : ""}${cancellationDate ? `Cancelled on: ${cancellationDate}\n` : ""}${deliveryNote ? `Note: ${deliveryNote}\n` : ""}
+${viewOrdersLink ? `View your orders: ${viewOrdersLink}\n` : ""}
 
 If you have already made a payment, please contact support for refund details.
 
@@ -194,85 +148,63 @@ We’re here if you need help.
 Best regards,
 BookNest Team`;
 
-  html = `
-    <div style="font-family: Arial, sans-serif; background-color: #F8F4EC; padding: 30px;">
-      <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden;">
-        
-        <div style="background-color: #5C3B1E; padding: 24px; text-align: center;">
-          <h1 style="color: #FFF8F0;">BookNest</h1>
+      html = `
+        <div style="font-family: Arial, sans-serif; background-color: #F8F4EC; padding: 30px;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden;">
+            
+            <div style="background-color: #5C3B1E; padding: 24px; text-align: center;">
+              <h1 style="color: #FFF8F0;">BookNest</h1>
+            </div>
+
+            <div style="padding: 32px;">
+              <h2 style="color:#5C3B1E;">Order Cancelled</h2>
+
+              <p>Hi ${username},</p>
+
+              <p>Your BookNest order has been cancelled ❌</p>
+
+              ${
+                bookImage
+                  ? `<div style="text-align:center; margin: 20px 0;">
+                       <img
+                         src="${bookImage}"
+                         alt="${bookTitle}"
+                         style="max-width: 160px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #E7DCCD;"
+                       />
+                     </div>`
+                  : ""
+              }
+
+              ${bookTitle ? `<p><strong>Book:</strong> ${bookTitle}</p>` : ""}
+              ${cancellationDate ? `<p><strong>Cancelled on:</strong> ${cancellationDate}</p>` : ""}
+              ${deliveryNote ? `<p><strong>Note:</strong> ${deliveryNote}</p>` : ""}
+
+              ${
+                viewOrdersLink
+                  ? `<div style="text-align:center; margin:30px 0;">
+                      <a href="${viewOrdersLink}" style="background:#C9A24E; color:#fff; padding:14px 28px; border-radius:8px; text-decoration:none; font-weight:bold;">
+                        View Orders
+                      </a>
+                    </div>`
+                  : ""
+              }
+
+              <p style="margin-top:20px;">If you have already made a payment, please contact support for refund details.</p>
+              <p style="margin-top:20px;">We’re here if you need help.</p>
+              <p style="margin-top:20px;">Thank you for choosing BookNest.</p>
+            </div>
+          </div>
         </div>
+      `;
+    }
 
-        <div style="padding: 32px;">
-          <h2 style="color:#5C3B1E;">Order Cancelled</h2>
+    // ✅ Availability alert email
+    else if (payload && typeof payload === "object" && payload.type === "availability") {
+      const username = payload.username || "Reader";
+      const bookTitle = payload.bookTitle || "";
+      const bookImage = payload.bookImage || "";
 
-          <p>Hi ${username},</p>
-
-          <p>Your BookNest order has been cancelled ❌</p>
-
-          ${
-            bookImage
-              ? `<div style="text-align:center; margin: 20px 0;">
-                   <img
-                     src="${bookImage}"
-                     alt="${bookTitle}"
-                     style="max-width: 160px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #E7DCCD;"
-                   />
-                 </div>`
-              : ""
-          }
-
-          ${
-            bookTitle
-              ? `<p><strong>Book:</strong> ${bookTitle}</p>`
-              : ""
-          }
-
-          ${
-            cancellationDate
-              ? `<p><strong>Cancelled on:</strong> ${cancellationDate}</p>`
-              : ""
-          }
-
-          ${
-            deliveryNote
-              ? `<p><strong>Note:</strong> ${deliveryNote}</p>`
-              : ""
-          }
-
-          ${
-            viewOrdersLink
-              ? `<div style="text-align:center; margin:30px 0;">
-                  <a href="${viewOrdersLink}" style="background:#C9A24E; color:#fff; padding:14px 28px; border-radius:8px; text-decoration:none; font-weight:bold;">
-                    View Orders
-                  </a>
-                </div>`
-              : ""
-          }
-
-          <p style="margin-top:20px;">
-            If you have already made a payment, please contact support for refund details.
-          </p>
-
-          <p style="margin-top:20px;">
-            We’re here if you need help.
-          </p>
-
-          <p style="margin-top:20px;">
-            Thank you for choosing BookNest.
-          </p>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-  // ✅ Availability alert email
-else if (payload && typeof payload === "object" && payload.type === "availability") {
-  const username = payload.username || "Reader";
-  const bookTitle = payload.bookTitle || "";
-  const bookImage = payload.bookImage || "";
-
-  text = `Hi ${username},
+      text = `Hi ${username},
 
 Good news 📚
 
@@ -287,63 +219,55 @@ Happy reading!
 Best regards,
 BookNest Team`;
 
-  html = `
-    <div style="font-family: Arial, sans-serif; background-color: #F8F4EC; padding: 30px;">
-      <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden;">
-        
-        <div style="background-color: #5C3B1E; padding: 24px; text-align: center;">
-          <h1 style="color: #FFF8F0;">BookNest</h1>
+      html = `
+        <div style="font-family: Arial, sans-serif; background-color: #F8F4EC; padding: 30px;">
+          <div style="max-width: 600px; margin: 0 auto; background-color: #FFFFFF; border-radius: 12px; overflow: hidden;">
+            
+            <div style="background-color: #5C3B1E; padding: 24px; text-align: center;">
+              <h1 style="color: #FFF8F0;">BookNest</h1>
+            </div>
+
+            <div style="padding: 32px;">
+              <h2 style="color:#5C3B1E;">Back in Stock</h2>
+
+              <p>Hi ${username},</p>
+
+              <p>Good news 📚</p>
+
+              <p>The book you wanted is now back in stock.</p>
+
+              ${
+                bookImage
+                  ? `<div style="text-align:center; margin: 20px 0;">
+                       <img
+                         src="${bookImage}"
+                         alt="${bookTitle}"
+                         style="max-width: 160px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #E7DCCD;"
+                       />
+                     </div>`
+                  : ""
+              }
+
+              ${bookTitle ? `<p><strong>Book:</strong> ${bookTitle}</p>` : ""}
+
+              <p style="margin-top:20px;">You can visit BookNest now and place your order before it sells out again.</p>
+              <p style="margin-top:20px;">Happy reading!</p>
+            </div>
+          </div>
         </div>
+      `;
+    }
 
-        <div style="padding: 32px;">
-          <h2 style="color:#5C3B1E;">Back in Stock</h2>
+    // ✅ Order confirmation email
+    else if (payload && typeof payload === "object" && payload.type === "orderConfirmation") {
+      const username = payload.username || "Customer";
+      const bookTitle = payload.bookTitle || "";
+      const quantity = payload.quantity || 1;
+      const total = payload.total || "";
+      const orderId = payload.orderId || "";
+      const bookImage = payload.bookImage || "";
 
-          <p>Hi ${username},</p>
-
-          <p>Good news 📚</p>
-
-          <p>The book you wanted is now back in stock.</p>
-
-          ${
-            bookImage
-              ? `<div style="text-align:center; margin: 20px 0;">
-                   <img
-                     src="${bookImage}"
-                     alt="${bookTitle}"
-                     style="max-width: 160px; width: 100%; height: auto; border-radius: 10px; border: 1px solid #E7DCCD;"
-                   />
-                 </div>`
-              : ""
-          }
-
-          ${
-            bookTitle
-              ? `<p><strong>Book:</strong> ${bookTitle}</p>`
-              : ""
-          }
-
-          <p style="margin-top:20px;">
-            You can visit BookNest now and place your order before it sells out again.
-          </p>
-
-          <p style="margin-top:20px;">
-            Happy reading!
-          </p>
-        </div>
-      </div>
-    </div>
-  `;
-}
-
-else if (payload && typeof payload === "object" && payload.type === "orderConfirmation") {
-  const username = payload.username || "Customer";
-  const bookTitle = payload.bookTitle || "";
-  const quantity = payload.quantity || 1;
-  const total = payload.total || "";
-  const orderId = payload.orderId || "";
-  const bookImage = payload.bookImage || "";
-
-  text = `Hi ${username},
+      text = `Hi ${username},
 
 Your order has been placed successfully 📚
 
@@ -354,41 +278,39 @@ Total: ${total}
 
 Thank you for shopping with BookNest!`;
 
-  html = `
-<div style="font-family:Arial; background:#F8F4EC; padding:30px;">
- <div style="max-width:600px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;">
-   
-   <div style="background:#5C3B1E;padding:24px;text-align:center;">
-      <h1 style="color:#FFF8F0;">BookNest</h1>
-   </div>
+      html = `
+        <div style="font-family:Arial; background:#F8F4EC; padding:30px;">
+          <div style="max-width:600px;margin:auto;background:#fff;border-radius:12px;overflow:hidden;">
+            
+            <div style="background:#5C3B1E;padding:24px;text-align:center;">
+              <h1 style="color:#FFF8F0;">BookNest</h1>
+            </div>
 
-   <div style="padding:32px;">
-      <h2 style="color:#5C3B1E;">Order Confirmed 🎉</h2>
+            <div style="padding:32px;">
+              <h2 style="color:#5C3B1E;">Order Confirmed 🎉</h2>
 
-      <p>Hi ${username},</p>
-      <p>Your order has been placed successfully.</p>
+              <p>Hi ${username},</p>
+              <p>Your order has been placed successfully.</p>
 
-      ${
-        bookImage ? `
-        <div style="text-align:center;margin:20px 0;">
-          <img src="${bookImage}"
-               style="max-width:160px;border-radius:10px;">
-        </div>` : ""
-      }
+              ${
+                bookImage
+                  ? `<div style="text-align:center;margin:20px 0;">
+                       <img src="${bookImage}" style="max-width:160px;border-radius:10px;">
+                     </div>`
+                  : ""
+              }
 
-      <p><strong>Order ID:</strong> ${orderId}</p>
-      <p><strong>Book:</strong> ${bookTitle}</p>
-      <p><strong>Quantity:</strong> ${quantity}</p>
-      <p><strong>Total:</strong> ${total}</p>
+              <p><strong>Order ID:</strong> ${orderId}</p>
+              <p><strong>Book:</strong> ${bookTitle}</p>
+              <p><strong>Quantity:</strong> ${quantity}</p>
+              <p><strong>Total:</strong> ${total}</p>
 
-      <p style="margin-top:25px;">
-        Thank you for shopping with BookNest!
-      </p>
-   </div>
- </div>
-</div>
-`;
-}
+              <p style="margin-top:25px;">Thank you for shopping with BookNest!</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
 
     // ✅ Subscription email
     else if (payload && typeof payload === "object" && payload.type === "subscription") {
@@ -406,11 +328,7 @@ You will now receive:
 • Special offers
 • Reading recommendations
 
-${
-  unsubscribeLink
-    ? `If you want to unsubscribe, use this link:\n${unsubscribeLink}\n`
-    : ""
-}
+${unsubscribeLink ? `If you want to unsubscribe, use this link:\n${unsubscribeLink}\n` : ""}
 
 We’re excited to have you with us!
 
@@ -454,18 +372,14 @@ BookNest Team`;
                   : ""
               }
 
-              <p style="margin-top:20px;">
-                We’re excited to have you with us!
-              </p>
-
-              <p style="margin-top:20px;">
-                Thank you for choosing BookNest.
-              </p>
+              <p style="margin-top:20px;">We’re excited to have you with us!</p>
+              <p style="margin-top:20px;">Thank you for choosing BookNest.</p>
             </div>
           </div>
         </div>
       `;
     }
+
     // ✅ Unsubscribed email
     else if (payload && typeof payload === "object" && payload.type === "unsubscribed") {
       const username = payload.username || "Reader";
@@ -508,32 +422,25 @@ BookNest Team`;
                 <li>Reading recommendations</li>
               </ul>
 
-              <p style="margin-top:20px;">
-                We're sorry to see you go.
-              </p>
-
-              <p style="margin-top:20px;">
-                If you change your mind, you're always welcome back.
-              </p>
-
-              <p style="margin-top:20px;">
-                Thank you for being part of BookNest.
-              </p>
+              <p style="margin-top:20px;">We're sorry to see you go.</p>
+              <p style="margin-top:20px;">If you change your mind, you're always welcome back.</p>
+              <p style="margin-top:20px;">Thank you for being part of BookNest.</p>
             </div>
           </div>
         </div>
       `;
     }
 
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
+    const data = await resend.emails.send({
+      from: process.env.EMAIL_FROM || "BookNest <onboarding@resend.dev>",
       to,
       subject,
       text,
       html,
     });
 
-    console.log("Email sent successfully");
+    console.log("Email sent successfully:", data);
+    return data;
   } catch (error) {
     console.log("Email error:", error);
     throw error;
@@ -541,3 +448,4 @@ BookNest Team`;
 };
 
 module.exports = sendEmail;
+```
