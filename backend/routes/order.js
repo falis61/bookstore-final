@@ -183,19 +183,24 @@ router.post("/place-order", authenticateToken, async (req, res) => {
         const itemPrice = Number(item.book?.price || item.price || 0);
         return total + itemPrice * itemQuantity;
       }, 0);
-
-      await sendEmail(userData.email, "BookNest Order Confirmation", {
-        type: "orderConfirmation",
-        username: userData.username,
-        bookTitle: emailTitle,
-        bookImage: emailImage,
-        quantity: firstOrderItem?.quantity || 1,
-        total: totalPrice,
-        paymentMethod: paymentMethod,
-        shippingAddress: shippingAddress,
-        viewOrdersLink: "http://localhost:5173/profile/orderHistory",
-      });
-    }
+      
+      try {
+  await sendEmail(userData.email, "BookNest Order Confirmation", {
+    type: "orderConfirmation",
+    username: userData.username,
+    bookTitle: emailTitle,
+    bookImage: emailImage,
+    quantity: firstOrderItem?.quantity || 1,
+    total: totalPrice,
+    paymentMethod: paymentMethod,
+    shippingAddress: shippingAddress,
+    viewOrdersLink: "http://localhost:5173/profile/orderHistory",
+  });
+} catch (emailError) {
+  console.log("Order placed, but confirmation email failed:", emailError.message);
+}
+      
+    } 
 
     return res.json({
       status: "success",
