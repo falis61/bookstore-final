@@ -430,16 +430,20 @@ BookNest Team`;
       `;
     }
 
-    const data = await resend.emails.send({
-      from: process.env.EMAIL_FROM || "BookNest <onboarding@resend.dev>",
-      to,
-      subject,
-      text,
-      html,
-    });
+  console.log("====================================");
+console.log("Sending FROM:", process.env.EMAIL_FROM);
+console.log("Sending TO:", to);
 
-    console.log("Email sent successfully:", data);
-    return data;
+const data = await resend.emails.send({
+  from: process.env.EMAIL_FROM || "BookNest <onboarding@resend.dev>",
+  to,
+  subject,
+  text,
+  html,
+});
+
+console.log("Resend response:", JSON.stringify(data, null, 2));
+return data; 
   } catch (error) {
     console.log("Email error:", error);
     throw error;
