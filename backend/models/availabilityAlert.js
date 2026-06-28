@@ -4,7 +4,7 @@ const availabilityAlertSchema = new mongoose.Schema(
   {
     user: {
       type: mongoose.Types.ObjectId,
-      ref: "user",
+      ref: "users",
       required: true,
     },
 
