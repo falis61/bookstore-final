@@ -340,8 +340,7 @@ router.put("/update-book", authenticateToken, async (req, res) => {
          }
         }
 
-        alert.notified = true;
-        await alert.save();
+        await AvailabilityAlert.findByIdAndDelete(alert._id);
       }
     }
 
